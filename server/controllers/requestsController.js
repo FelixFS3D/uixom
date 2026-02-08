@@ -14,7 +14,12 @@ exports.createRequest = async (req, res) => {
 
     // Send to n8n webhook if configured (non-blocking)
     if (config.n8nWebhookUrl) {
-      axios.post(config.n8nWebhookUrl, { request }).catch(err => {
+      axios.post(config.n8nWebhookUrl, {
+        name: request.name,
+        phone: request.phone,
+        email: request.email,
+        description: request.description
+      }).catch(err => {
         console.warn('n8n webhook failed:', err.message);
       });
     }

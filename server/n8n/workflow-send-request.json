@@ -8,34 +8,42 @@
         "responseMode": "onReceived",
         "options": {}
       },
+      "id": "webhook-node-id",
       "name": "Receive Request",
       "type": "n8n-nodes-base.webhook",
-      "typeVersion": 1,
-      "position": [250, 300]
+      "typeVersion": 1.1,
+      "position": [250, 300],
+      "webhookId": "receive-request"
     },
     {
       "parameters": {
-        "fromEmail": "{{ $json["body"]["email"] }}",
-        "toEmail": "={{ $json["body"]["email"] }}",
+        "fromEmail": "felix.fs3d@gmail.com",
+        "toEmail": "={{$json.body.email}}",
         "subject": "Confirmación: hemos recibido tu solicitud",
-        "text": "Hola {{$json["body"]["name"]}},\n\nHemos recibido tu solicitud:\n\nDescripción: {{$json["body"]["description"]}}\n\nNos pondremos en contacto pronto.\n\nSaludos,\nEquipo Uixom"
+        "html": "=<p>Hola {{$json.body.name}},</p><p>Hemos recibido tu solicitud:</p><p>Descripción: {{$json.body.description}}</p><p>Nos pondremos en contacto pronto.</p><p>Saludos,<br/>Equipo Uixom</p>",
+        "options": {}
       },
-      "name": "Send confirmation email",
-      "type": "n8n-nodes-base.smtp",
-      "typeVersion": 1,
-      "position": [600, 200]
+      "id": "email-confirmation-node-id",
+      "name": "Send Confirmation Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [600, 200],
+      "credentials": {}
     },
     {
       "parameters": {
-        "fromEmail": "no-reply@yourdomain.com",
-        "toEmail": "team@yourdomain.com",
-        "subject": "Nueva solicitud recibida: {{$json["body"]["name"]}}",
-        "text": "Nueva solicitud recibida:\n\nNombre: {{$json["body"]["name"]}}\nTeléfono: {{$json["body"]["phone"]}}\nEmail: {{$json["body"]["email"]}}\nDescripción: {{$json["body"]["description"]}}\n\nRevisa el panel de administración para detalles."
+        "fromEmail": "felix.fs3d@gmail.com",
+        "toEmail": "felix.fs3d@gmail.com",
+        "subject": "=Nueva solicitud recibida: {{$json.body.name}}",
+        "html": "=<p><strong>Nueva solicitud recibida:</strong></p><p>Nombre: {{$json.body.name}}<br/>Teléfono: {{$json.body.phone}}<br/>Email: {{$json.body.email}}<br/>Descripción: {{$json.body.description}}</p><p>Revisa el panel de administración para detalles.</p>",
+        "options": {}
       },
-      "name": "Notify team email",
-      "type": "n8n-nodes-base.smtp",
-      "typeVersion": 1,
-      "position": [600, 400]
+      "id": "email-team-node-id",
+      "name": "Notify Team Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [600, 400],
+      "credentials": {}
     }
   ],
   "connections": {
@@ -43,12 +51,12 @@
       "main": [
         [
           {
-            "node": "Send confirmation email",
+            "node": "Send Confirmation Email",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Notify team email",
+            "node": "Notify Team Email",
             "type": "main",
             "index": 0
           }
@@ -57,6 +65,12 @@
     }
   },
   "active": false,
-  "settings": {},
-  "id": "send-request-workflow"
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "instanceId": "uixom-backend"
+  },
+  "tags": []
 }
