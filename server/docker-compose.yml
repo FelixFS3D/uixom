@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - '27017:27017'
+
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - '5678:5678'
+    environment:
+      - GENERIC_TIMEZONE=Europe/Madrid
+      - N8N_BASIC_AUTH_ACTIVE=false
+    volumes:
+      - n8n-data:/home/node/.n8n
+
+  server:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - mongo
+      - n8n
+    environment:
+      - PORT=5005
+      - MONGODB_URI=mongodb://mongo:27017/uixom
+      - N8N_WEBHOOK_URL=http://n8n:5678/webhook/receive-request
+    ports:
+      - '5005:5005'
+
+volumes:
+  mongo-data:
+  n8n-data:

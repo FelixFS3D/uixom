@@ -1,0 +1,62 @@
+{
+  "name": "Send request emails (webhook -> confirmation + notify team)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "receive-request",
+        "httpMethod": "POST",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Receive Request",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "{{ $json["body"]["email"] }}",
+        "toEmail": "={{ $json["body"]["email"] }}",
+        "subject": "Confirmación: hemos recibido tu solicitud",
+        "text": "Hola {{$json["body"]["name"]}},\n\nHemos recibido tu solicitud:\n\nDescripción: {{$json["body"]["description"]}}\n\nNos pondremos en contacto pronto.\n\nSaludos,\nEquipo Uixom"
+      },
+      "name": "Send confirmation email",
+      "type": "n8n-nodes-base.smtp",
+      "typeVersion": 1,
+      "position": [600, 200]
+    },
+    {
+      "parameters": {
+        "fromEmail": "no-reply@yourdomain.com",
+        "toEmail": "team@yourdomain.com",
+        "subject": "Nueva solicitud recibida: {{$json["body"]["name"]}}",
+        "text": "Nueva solicitud recibida:\n\nNombre: {{$json["body"]["name"]}}\nTeléfono: {{$json["body"]["phone"]}}\nEmail: {{$json["body"]["email"]}}\nDescripción: {{$json["body"]["description"]}}\n\nRevisa el panel de administración para detalles."
+      },
+      "name": "Notify team email",
+      "type": "n8n-nodes-base.smtp",
+      "typeVersion": 1,
+      "position": [600, 400]
+    }
+  ],
+  "connections": {
+    "Receive Request": {
+      "main": [
+        [
+          {
+            "node": "Send confirmation email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notify team email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "send-request-workflow"
+}
