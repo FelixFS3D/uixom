@@ -3,13 +3,13 @@
 ![Build Status](https://github.com/FelixFS3D/uixom/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Backend robusto para la plataforma Uixom, construido con el stack MERN (MongoDB, Express, React, Node.js) y preparado para producción con Docker, CI/CD y notificaciones automatizadas.
+Backend robusto para la plataforma Uixom, construido con el stack MERN (MongoDB, Express, React, Node.js) y preparado para producción con CI/CD y notificaciones internas por correo.
 
 ## ✨ Features
 
 - **API RESTful:** Endpoints para gestionar solicitudes de clientes.
-- **Notificaciones Automatizadas:** Integración con **n8n** para enviar correos de confirmación y notificaciones al equipo.
-- **Contenerizado con Docker:** Listo para desplegar en cualquier entorno compatible con Docker.
+- **Notificaciones Automatizadas:** Correos de confirmación y avisos internos usando Nodemailer.
+- **Panel interno:** Endpoint de métricas (totales por estado/prioridad) para supervisar la carga de trabajo.
 - **Base de Datos NoSQL:** Persistencia de datos con **MongoDB**.
 - **Seguridad:** Middlewares de seguridad básicos con Helmet y limitación de tasa de peticiones.
 - **CI/CD:** Workflow de GitHub Actions para pruebas automatizadas.
@@ -18,15 +18,13 @@ Backend robusto para la plataforma Uixom, construido con el stack MERN (MongoDB,
 
 - **Backend:** Node.js, Express.js
 - **Base de Datos:** MongoDB con Mongoose
-- **Contenerización:** Docker, Docker Compose
-- **Automatización:** n8n
+- **Notificaciones:** Nodemailer
 - **Testing:** Jest, Supertest
 - **CI/CD:** GitHub Actions
 
 ## 📋 Prerrequisitos
 
 - Node.js (v18+)
-- Docker y Docker Compose
 - Un cliente de terminal (como PowerShell o Git Bash)
 
 ## ⚙️ Instalación y Setup
@@ -38,7 +36,7 @@ Backend robusto para la plataforma Uixom, construido con el stack MERN (MongoDB,
     ```
 
 2.  **Crear archivo de entorno:**
-    Copia el archivo `.env.example` a `.env` y personaliza las variables (especialmente si no usas Docker).
+    Copia el archivo `.env.example` a `.env` y personaliza las variables necesarias para tu entorno local.
     ```powershell
     copy .env.example .env
     ```
@@ -49,17 +47,6 @@ Backend robusto para la plataforma Uixom, construido con el stack MERN (MongoDB,
     ```
 
 ## ධ Ejecución
-
-### Con Docker (Recomendado)
-
-Este método levanta el servidor, la base de datos (Mongo) y el sistema de automatización (n8n) en contenedores aislados.
-
-```bash
-docker compose up --build
-```
-
--   **API Server:** [http://localhost:5005](http://localhost:5005)
--   **n8n UI:** [http://localhost:5678](http://localhost:5678)
 
 ### Localmente (Modo Desarrollo)
 
@@ -75,7 +62,8 @@ El servidor se reiniciará automáticamente con cada cambio.
 
 -   `POST /api/requests`: Crea una nueva solicitud.
     -   **Body:** `{ "name": "string", "phone": "string", "email": "string", "description": "string" }`
--   `GET /api/requests`: Obtiene todas las solicitudes.
+-   `GET /api/requests`: Obtiene todas las solicitudes. Acepta filtros (`status`, `priority`, `search`) y ordenamiento (`sortBy`, `sortOrder`).
+-   `GET /api/requests/stats`: Totales por estado y prioridad (requiere token de admin).
 
 ## 🧪 Testing
 
