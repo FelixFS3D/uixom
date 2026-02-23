@@ -3,9 +3,9 @@ import PublicNavbar from './PublicNavbar';
 
 const PublicLayout = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-950">
       <PublicNavbar />
-      <main>
+      <main className="pt-20">
         <Outlet />
       </main>
     </div>
