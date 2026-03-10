@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { LogIn } from 'lucide-react';
 
 const PublicNavbar = () => {
   return (
@@ -26,16 +25,6 @@ const PublicNavbar = () => {
               className="text-gray-300 hover:text-cyan-400 transition-colors font-medium"
             >
               Contacto
-            </Link>
-            <Link
-              to="/login"
-              className="group relative px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <span className="relative z-10 flex items-center gap-2">
-                <LogIn size={18} />
-                Admin
-              </span>
             </Link>
           </div>
         </div>

@@ -11,13 +11,13 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('../models/User');
 
-const ADMIN_NAME = process.env.ADMIN_NAME || 'Felix Admin';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'felix.fs3d@gmail.com';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123456';
+const ADMIN_NAME = process.env.ADMIN_NAME;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 async function createAdmin() {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/uixom';
+    const mongoURI = process.env.MONGODB_URI;
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
 

@@ -5,10 +5,9 @@ import { Send, Mail, Phone, User, MessageSquare, Sparkles, CheckCircle2 } from '
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    clientName: '',
-    clientPhone: '',
-    clientEmail: '',
+    name: '',
+    phone: '',
+    email: '',
     description: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -17,7 +16,7 @@ const ContactPage = () => {
     mutationFn: createRequest,
     onSuccess: () => {
       setSubmitted(true);
-      setFormData({ title: '', clientName: '', clientPhone: '', clientEmail: '', description: '' });
+      setFormData({ name: '', phone: '', email: '', description: '' });
     },
   });
 
@@ -27,10 +26,7 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate({
-      ...formData,
-      priority: 'media',
-    });
+    mutation.mutate(formData);
   };
 
   if (submitted) {
@@ -107,9 +103,9 @@ const ContactPage = () => {
                 Nombre Completo
               </label>
               <input
-                name="clientName"
+                name="name"
                 required
-                value={formData.clientName}
+                value={formData.name}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
                 placeholder="Juan Pérez"
@@ -123,10 +119,10 @@ const ContactPage = () => {
                 Email
               </label>
               <input
-                name="clientEmail"
+                name="email"
                 type="email"
                 required
-                value={formData.clientEmail}
+                value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
                 placeholder="juan@ejemplo.com"
@@ -137,31 +133,16 @@ const ContactPage = () => {
             <div>
               <label className="block text-sm font-semibold text-gray-200 mb-2 flex items-center gap-2">
                 <Phone size={18} className="text-cyan-400" />
-                Teléfono <span className="text-gray-500 text-xs">(opcional)</span>
+                Teléfono
               </label>
               <input
-                name="clientPhone"
+                name="phone"
                 type="tel"
-                value={formData.clientPhone}
+                required
+                value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
                 placeholder="+34 600 000 000"
-              />
-            </div>
-
-            {/* Title */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-200 mb-2 flex items-center gap-2">
-                <MessageSquare size={18} className="text-cyan-400" />
-                Asunto del Proyecto
-              </label>
-              <input
-                name="title"
-                required
-                value={formData.title}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
-                placeholder="Diseño de eCommerce para mi tienda"
               />
             </div>
 
