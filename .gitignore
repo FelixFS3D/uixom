@@ -1,2 +1,39 @@
 # Local review notes
 BACKEND_REVIEW.md
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+server/logs/
+server/server.log.txt
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Build outputs
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# OS
+.DS_Store
+Thumbs.db

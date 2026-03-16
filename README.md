@@ -3,31 +3,76 @@
 ![Build Status](https://github.com/FelixFS3D/uixom/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Backend robusto para la plataforma Uixom, construido con el stack MERN (MongoDB, Express, React, Node.js) y preparado para producción con CI/CD y notificaciones internas por correo.
+Backend robusto para la plataforma Uixom, construido con Node.js, Express, React y PostgreSQL, preparado para producción con Docker, CI/CD y notificaciones por correo.
 
 ## ✨ Features
 
-- **API RESTful:** Endpoints para gestionar solicitudes de clientes.
-- **Notificaciones Automatizadas:** Correos de confirmación y avisos internos usando Nodemailer.
-- **Panel interno:** Endpoint de métricas (totales por estado/prioridad) para supervisar la carga de trabajo.
-- **Base de Datos NoSQL:** Persistencia de datos con **MongoDB**.
-- **Seguridad:** Middlewares de seguridad básicos con Helmet y limitación de tasa de peticiones.
-- **CI/CD:** Workflow de GitHub Actions para pruebas automatizadas.
+- **API RESTful:** Endpoints para gestionar solicitudes de clientes y usuarios
+- **Autenticación JWT:** Sistema de autenticación seguro con roles (admin, user)
+- **Notificaciones Automatizadas:** Correos de confirmación usando Nodemailer
+- **Panel de Control:** Dashboard con métricas y estadísticas
+- **Base de Datos:** PostgreSQL con Sequelize ORM
+- **Seguridad:** Middlewares de seguridad con validación de datos
+- **Docker:** Despliegue completamente dockerizado
+- **CI/CD:** Workflow de GitHub Actions para pruebas automatizadas
+- **Documentación API:** Swagger/OpenAPI integrado
 
 ## 🚀 Stack Tecnológico
 
 - **Backend:** Node.js, Express.js
-- **Base de Datos:** MongoDB con Mongoose
+- **Frontend:** React, Vite, TailwindCSS
+- **Base de Datos:** PostgreSQL con Sequelize
+- **Autenticación:** JWT
 - **Notificaciones:** Nodemailer
 - **Testing:** Jest, Supertest
+- **Containerización:** Docker, Docker Compose
 - **CI/CD:** GitHub Actions
 
 ## 📋 Prerrequisitos
 
+### Opción 1: Con Docker (Recomendado)
+- Docker (v20.10+)
+- Docker Compose (v2.0+)
+
+### Opción 2: Sin Docker
 - Node.js (v18+)
-- Un cliente de terminal (como PowerShell o Git Bash)
+- PostgreSQL (v14+)
 
 ## ⚙️ Instalación y Setup
+
+### 🐳 Usando Docker (Recomendado)
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/FelixFS3D/uixom.git
+   cd uixom
+   ```
+
+2. **Configurar variables de entorno:**
+   ```bash
+   cp .env.example .env
+   # Edita .env con tus valores
+   ```
+
+3. **Construir e iniciar los contenedores:**
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Inicializar la base de datos:**
+   ```bash
+   docker-compose exec backend node scripts/setup.js
+   docker-compose exec backend node scripts/createAdmin.js
+   ```
+
+5. **Acceder a la aplicación:**
+   - Frontend: http://localhost
+   - Backend API: http://localhost:5005
+   - API Docs: http://localhost:5005/api-docs
+
+📖 **Documentación completa de Docker:** Ver [DOCKER.md](./DOCKER.md)
+
+### 💻 Instalación Manual (Sin Docker)
 
 1.  **Clonar el repositorio:**
     ```bash
