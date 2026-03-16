@@ -18,7 +18,7 @@ cp .env.example .env
 ```
 
 Edita `.env` con tus valores reales:
-- Cambia `DB_PASSWORD` por una contraseña segura
+- Cambia `MONGO_PASSWORD` por una contraseña segura
 - Cambia `JWT_SECRET` por una clave secreta segura
 - Configura las credenciales de email si deseas notificaciones
 
@@ -39,13 +39,10 @@ docker-compose logs -f db
 
 ### 3. Inicializar la Base de Datos
 
-Una vez que los contenedores estén corriendo, necesitas crear las tablas:
+Una vez que los contenedores estén corriendo, crea el usuario administrador:
 
 ```bash
-# Ejecutar el script de setup dentro del contenedor
-docker-compose exec backend node scripts/setup.js
-
-# Crear un usuario administrador (opcional)
+# Crear un usuario administrador
 docker-compose exec backend node scripts/createAdmin.js
 ```
 
@@ -84,7 +81,7 @@ docker-compose ps
 
 # Acceder a la shell de un contenedor
 docker-compose exec backend sh
-docker-compose exec db psql -U postgres -d uixom
+docker-compose exec db mongosh -u admin -p changeme --authenticationDatabase admin uixom
 
 # Ver logs en tiempo real
 docker-compose logs -f --tail=100
@@ -97,20 +94,22 @@ docker stats
 
 ```bash
 # Backup de la base de datos
-docker-compose exec db pg_dump -U postgres uixom > backup.sql
+docker-compose exec db mongodump --uri="mongodb://admin:changeme@localhost:27017/uixom?authSource=admin" --archive=/tmp/backup.archive
+docker cp uixom-db:/tmp/backup.archive ./backup.archive
 
 # Restaurar backup
-docker-compose exec -T db psql -U postgres uixom < backup.sql
+docker cp ./backup.archive uixom-db:/tmp/backup.archive
+docker-compose exec db mongorestore --uri="mongodb://admin:changeme@localhost:27017/uixom?authSource=admin" --archive=/tmp/backup.archive
 
-# Conectarse a PostgreSQL
-docker-compose exec db psql -U postgres -d uixom
+# Conectarse a MongoDB
+docker-compose exec db mongosh -u admin -p changeme --authenticationDatabase admin uixom
 ```
 
 ## 🏗️ Estructura de Docker
 
 El proyecto utiliza una arquitectura multi-contenedor:
 
-- **db**: PostgreSQL 15 Alpine
+- **db**: MongoDB 7 (Jammy)
 - **backend**: Node.js API (puerto 5005)
 - **frontend**: Nginx sirviendo la app React (puerto 80)
 
@@ -123,7 +122,7 @@ Todos los servicios se comunican a través de una red privada de Docker.
 Asegúrate de cambiar estos valores en producción:
 
 ```env
-DB_PASSWORD=<contraseña-muy-segura>
+MONGO_PASSWORD=<contraseña-muy-segura>
 JWT_SECRET=<clave-secreta-larga-y-aleatoria>
 VITE_API_URL=https://tu-dominio.com/api
 ```

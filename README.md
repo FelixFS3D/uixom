@@ -3,7 +3,7 @@
 ![Build Status](https://github.com/FelixFS3D/uixom/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Backend robusto para la plataforma Uixom, construido con Node.js, Express, React y PostgreSQL, preparado para producción con Docker, CI/CD y notificaciones por correo.
+Backend robusto para la plataforma Uixom, construido con Node.js, Express, React y MongoDB, preparado para producción con Docker, CI/CD y notificaciones por correo.
 
 ## ✨ Features
 
@@ -11,7 +11,7 @@ Backend robusto para la plataforma Uixom, construido con Node.js, Express, React
 - **Autenticación JWT:** Sistema de autenticación seguro con roles (admin, user)
 - **Notificaciones Automatizadas:** Correos de confirmación usando Nodemailer
 - **Panel de Control:** Dashboard con métricas y estadísticas
-- **Base de Datos:** PostgreSQL con Sequelize ORM
+- **Base de Datos:** MongoDB con Mongoose
 - **Seguridad:** Middlewares de seguridad con validación de datos
 - **Docker:** Despliegue completamente dockerizado
 - **CI/CD:** Workflow de GitHub Actions para pruebas automatizadas
@@ -21,7 +21,7 @@ Backend robusto para la plataforma Uixom, construido con Node.js, Express, React
 
 - **Backend:** Node.js, Express.js
 - **Frontend:** React, Vite, TailwindCSS
-- **Base de Datos:** PostgreSQL con Sequelize
+- **Base de Datos:** MongoDB con Mongoose
 - **Autenticación:** JWT
 - **Notificaciones:** Nodemailer
 - **Testing:** Jest, Supertest
@@ -36,7 +36,7 @@ Backend robusto para la plataforma Uixom, construido con Node.js, Express, React
 
 ### Opción 2: Sin Docker
 - Node.js (v18+)
-- PostgreSQL (v14+)
+- MongoDB (v6+)
 
 ## ⚙️ Instalación y Setup
 
@@ -59,9 +59,8 @@ Backend robusto para la plataforma Uixom, construido con Node.js, Express, React
    docker-compose up -d
    ```
 
-4. **Inicializar la base de datos:**
+4. **Crear usuario administrador:**
    ```bash
-   docker-compose exec backend node scripts/setup.js
    docker-compose exec backend node scripts/createAdmin.js
    ```
 
