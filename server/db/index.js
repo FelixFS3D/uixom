@@ -11,7 +11,11 @@ const connect = async () => {
     logger.info(`Connected to MongoDB: ${mongoose.connection.name}`);
   } catch (err) {
     logger.error(`MongoDB connection error: ${err.message}`);
-    process.exit(1);
+    if (process.env.NODE_ENV !== 'test') {
+      process.exit(1);
+    } else {
+      throw err;
+    }
   }
 };
 
