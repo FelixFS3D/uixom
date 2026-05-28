@@ -22,7 +22,7 @@ const DashboardPage = () => {
       <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-4 rounded-xl backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <AlertCircle size={20} />
-          <span>Error al cargar las estadísticas</span>
+          <span>Error loading statistics</span>
         </div>
       </div>
     );
@@ -30,7 +30,7 @@ const DashboardPage = () => {
 
   const statusCards = [
     {
-      title: 'Nuevas',
+      title: 'New',
       value: stats?.status?.new || 0,
       icon: FileText,
       gradient: 'from-blue-500 to-cyan-500',
@@ -39,7 +39,7 @@ const DashboardPage = () => {
       iconBg: 'from-blue-500/20 to-cyan-500/20',
     },
     {
-      title: 'En Progreso',
+      title: 'In Progress',
       value: stats?.status?.in_progress || 0,
       icon: Clock,
       gradient: 'from-yellow-500 to-orange-500',
@@ -48,7 +48,7 @@ const DashboardPage = () => {
       iconBg: 'from-yellow-500/20 to-orange-500/20',
     },
     {
-      title: 'Completadas',
+      title: 'Completed',
       value: stats?.status?.done || 0,
       icon: CheckCircle,
       gradient: 'from-green-500 to-emerald-500',
@@ -57,7 +57,7 @@ const DashboardPage = () => {
       iconBg: 'from-green-500/20 to-emerald-500/20',
     },
     {
-      title: 'Canceladas',
+      title: 'Cancelled',
       value: stats?.status?.cancelled || 0,
       icon: XCircle,
       gradient: 'from-red-500 to-pink-500',
@@ -69,25 +69,25 @@ const DashboardPage = () => {
 
   const priorityCards = [
     { 
-      title: 'Baja', 
+      title: 'Low', 
       value: stats?.priority?.low || 0, 
       gradient: 'from-gray-500 to-gray-600',
       border: 'border-gray-500/30',
     },
     { 
-      title: 'Media', 
+      title: 'Medium', 
       value: stats?.priority?.medium || 0, 
       gradient: 'from-blue-500 to-cyan-500',
       border: 'border-blue-500/30',
     },
     { 
-      title: 'Alta', 
+      title: 'High', 
       value: stats?.priority?.high || 0, 
       gradient: 'from-orange-500 to-amber-500',
       border: 'border-orange-500/30',
     },
     { 
-      title: 'Urgente', 
+      title: 'Urgent', 
       value: stats?.priority?.urgent || 0, 
       gradient: 'from-red-500 to-pink-500',
       border: 'border-red-500/30',
@@ -104,7 +104,7 @@ const DashboardPage = () => {
           </span>
         </h1>
         <p className="text-gray-400">
-          Resumen de solicitudes y estadísticas en tiempo real
+          Real-time requests summary and statistics
         </p>
       </div>
 
@@ -116,7 +116,7 @@ const DashboardPage = () => {
         <div className="relative z-10 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <TrendingUp className="text-cyan-400" size={32} />
-            <p className="text-lg font-semibold text-gray-300">Total de Solicitudes</p>
+            <p className="text-lg font-semibold text-gray-300">Total Requests</p>
           </div>
           <p className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-2">
             {stats?.totals?.requests || 0}
@@ -129,7 +129,7 @@ const DashboardPage = () => {
       <div>
         <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
           <div className="w-1 h-8 bg-gradient-to-b from-cyan-400 to-purple-400 rounded-full"></div>
-          Por Estado
+          By Status
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {statusCards.map((card) => {
@@ -162,7 +162,7 @@ const DashboardPage = () => {
       <div>
         <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
           <div className="w-1 h-8 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full"></div>
-          Por Prioridad
+          By Priority
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {priorityCards.map((card) => (

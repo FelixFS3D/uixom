@@ -14,19 +14,19 @@ const Sidebar = () => {
       roles: ['admin', 'super_admin'],
     },
     {
-      name: 'Solicitudes',
+      name: 'Requests',
       path: '/solicitudes',
       icon: FileText,
       roles: ['admin', 'super_admin'],
     },
     {
-      name: 'Usuarios',
+      name: 'Users',
       path: '/usuarios',
       icon: Users,
       roles: ['super_admin'],
     },
     {
-      name: 'Mi Perfil',
+      name: 'My Profile',
       path: '/perfil',
       icon: User,
       roles: ['admin', 'super_admin'],

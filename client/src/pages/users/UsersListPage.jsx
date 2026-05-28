@@ -6,11 +6,11 @@ const UsersListPage = () => {
       <div>
         <h1 className="text-4xl font-bold mb-2">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-            Gestión de Usuarios
+            User Management
           </span>
         </h1>
         <p className="text-gray-400">
-          Administra los usuarios del sistema
+          Manage system users
         </p>
       </div>
 
@@ -24,9 +24,9 @@ const UsersListPage = () => {
               <Users className="text-cyan-400" size={40} />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-white mb-3">Función en Desarrollo</h2>
+          <h2 className="text-2xl font-bold text-white mb-3">Feature in Development</h2>
           <p className="text-gray-400 max-w-md mx-auto">
-            Próximamente podrás gestionar usuarios, roles y permisos desde esta sección.
+            Soon you'll be able to manage users, roles and permissions from this section.
           </p>
         </div>
       </div>

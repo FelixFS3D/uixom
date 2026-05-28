@@ -1,39 +1,132 @@
-# Local review notes
-BACKEND_REVIEW.md
+# ========================================
+# UIXOM - Git Ignore Configuration
+# ========================================
 
-# Environment variables
+# ========================================
+# ARCHIVOS SENSIBLES (ALTA PRIORIDAD)
+# ========================================
+# Variables de entorno CON CREDENCIALES REALES
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
+.env.staging
+
+# Mantener los archivos de ejemplo (sin credenciales)
 !.env.example
+!.env.production.example
 
-# Dependencies
+# Credenciales y secretos
+credentials/
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+
+# Archivos de configuración con datos sensibles
+config/production.js
+config/secrets.json
+
+# ========================================
+# DEPENDENCIAS
+# ========================================
 node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# Logs
+# ========================================
+# LOGS Y DEBUGGING
+# ========================================
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 server/logs/
 server/server.log.txt
 
-# Test coverage
+# ========================================
+# TEST COVERAGE
+# ========================================
 coverage/
 .nyc_output/
+*.lcov
 
-# Build outputs
+# ========================================
+# BUILD OUTPUTS
+# ========================================
 dist/
 build/
+client/dist/
+client/build/
+server/dist/
 
-# IDE
+# ========================================
+# IDE Y EDITORES
+# ========================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *.swn
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
 
-# OS
+# ========================================
+# SISTEMA OPERATIVO
+# ========================================
 .DS_Store
 Thumbs.db
+Desktop.ini
+*.bak
+
+# ========================================
+# BACKUPS Y DATOS SENSIBLES
+# ========================================
+backups/
+*.tar.gz
+*.zip
+*.dump
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+
+# SSL/TLS certificates (excepto README)
+nginx/ssl/*.pem
+nginx/ssl/*.key
+nginx/ssl/*.crt
+nginx/ssl/*.csr
+!nginx/ssl/README.md
+
+# ========================================
+# MONITORING Y TEMPORAL
+# ========================================
+monitoring/data/
+temp/
+tmp/
+*.tmp
+
+# ========================================
+# DOCKER (si aplica)
+# ========================================
+.docker/
+docker-compose.override.yml
+
+# ========================================
+# NOTAS Y DOCUMENTACIÓN LOCAL
+# ========================================
+# Notas personales de revisión (no compartidas)
+BACKEND_REVIEW.md
+notes.md
+TODO.md
+.notes/

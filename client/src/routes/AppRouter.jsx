@@ -7,6 +7,8 @@ import PublicLayout from '../components/layout/PublicLayout';
 
 // Public pages
 import HomePage from '../pages/public/HomePage';
+import AboutPage from '../pages/public/AboutPage';
+import FAQPage from '../pages/public/FAQPage';
 import ContactPage from '../pages/public/ContactPage';
 import LoginPage from '../pages/auth/LoginPage';
 
@@ -28,6 +30,8 @@ const AppRouter = () => {
         {/* Public routes */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>

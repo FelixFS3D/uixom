@@ -43,7 +43,7 @@ const RequestsListPage = () => {
       <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-4 rounded-xl backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <AlertCircle size={20} />
-          <span>Error al cargar las solicitudes</span>
+          <span>Error loading requests</span>
         </div>
       </div>
     );
@@ -56,11 +56,11 @@ const RequestsListPage = () => {
       <div>
         <h1 className="text-4xl font-bold mb-2">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-            Solicitudes
+            Requests
           </span>
         </h1>
         <p className="text-gray-400">
-          Gestiona todas las solicitudes de clientes
+          Manage all customer requests
         </p>
       </div>
 
@@ -69,7 +69,7 @@ const RequestsListPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative">
             <input
-              placeholder="Buscar..."
+              placeholder="Search..."
               value={filters.search}
               onChange={(e) => handleFilterChange('search', e.target.value)}
               className="w-full px-4 py-3 pl-10 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
@@ -82,11 +82,11 @@ const RequestsListPage = () => {
             value={filters.status}
             onChange={(e) => handleFilterChange('status', e.target.value)}
           >
-            <option value="">Todos los estados</option>
-            <option value="new">Nueva</option>
-            <option value="in_progress">En Progreso</option>
-            <option value="done">Completada</option>
-            <option value="cancelled">Cancelada</option>
+            <option value="">All statuses</option>
+            <option value="new">New</option>
+            <option value="in_progress">In Progress</option>
+            <option value="done">Completed</option>
+            <option value="cancelled">Cancelled</option>
           </select>
 
           <select
@@ -94,11 +94,11 @@ const RequestsListPage = () => {
             value={filters.priority}
             onChange={(e) => handleFilterChange('priority', e.target.value)}
           >
-            <option value="">Todas las prioridades</option>
-            <option value="low">Baja</option>
-            <option value="medium">Media</option>
-            <option value="high">Alta</option>
-            <option value="urgent">Urgente</option>
+            <option value="">All priorities</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="urgent">Urgent</option>
           </select>
         </div>
       </div>
@@ -110,22 +110,22 @@ const RequestsListPage = () => {
             <thead className="bg-gray-900/50 border-b border-gray-700/50">
               <tr>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-                  Cliente
+                  Customer
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-cyan-400 uppercase tracking-wider">
                   Email
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-                  Estado
+                  Status
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-                  Prioridad
+                  Priority
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-                  Fecha
+                  Date
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-                  Acciones
+                  Actions
                 </th>
               </tr>
             </thead>
@@ -133,7 +133,7 @@ const RequestsListPage = () => {
               {requests.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="px-6 py-12 text-center text-gray-500">
-                    No se encontraron solicitudes
+                    No requests found
                   </td>
                 </tr>
               ) : (
@@ -160,7 +160,7 @@ const RequestsListPage = () => {
                         to={`/solicitudes/${request._id}`}
                         className="text-cyan-400 hover:text-cyan-300 transition-colors"
                       >
-                        Ver detalles
+                        View details
                       </Link>
                     </td>
                   </tr>
@@ -175,11 +175,11 @@ const RequestsListPage = () => {
           <div className="border-t border-gray-700/50 px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="text-sm text-gray-400">
-                Mostrando <span className="font-medium text-white">{(pagination.page - 1) * pagination.limit + 1}</span> a{' '}
+                Showing <span className="font-medium text-white">{(pagination.page - 1) * pagination.limit + 1}</span> to{' '}
                 <span className="font-medium text-white">
                   {Math.min(pagination.page * pagination.limit, pagination.total)}
                 </span>{' '}
-                de <span className="font-medium text-white">{pagination.total}</span> resultados
+                of <span className="font-medium text-white">{pagination.total}</span> results
               </div>
 
               <div className="flex gap-2">
@@ -191,7 +191,7 @@ const RequestsListPage = () => {
                   <ChevronLeft size={20} />
                 </button>
                 <span className="px-4 py-2 text-sm text-gray-300">
-                  Página {pagination.page} de {pagination.pages}
+                  Page {pagination.page} of {pagination.pages}
                 </span>
                 <button
                   onClick={() => handlePageChange(pagination.page + 1)}

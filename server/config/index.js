@@ -27,6 +27,7 @@ const envSchema = Joi.object({
   EMAIL_FROM: Joi.string().allow(''),
   EMAIL_TEAM_TO: Joi.string().allow(''),
   EMAIL_REPLY_TO: Joi.string().allow(''),
+  WEBSITE_URL: Joi.string().uri().default('https://uixom.com'),
 }).unknown();
 
 const { value: envVars, error } = envSchema.validate(process.env, { abortEarly: false });
@@ -81,6 +82,7 @@ module.exports = {
     from: envVars.EMAIL_FROM || null,
     replyTo: envVars.EMAIL_REPLY_TO || null,
     teamRecipients: emailRecipients,
+    websiteUrl: envVars.WEBSITE_URL || 'https://uixom.com',
     enabled:
       Boolean(envVars.SMTP_HOST)
       && Boolean(envVars.SMTP_PORT)

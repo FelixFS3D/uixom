@@ -41,17 +41,17 @@ const ContactPage = () => {
             </div>
             <h2 className="text-4xl font-bold mb-4">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                ¡Solicitud Enviada!
+                Request Sent!
               </span>
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Hemos recibido tu solicitud y te contactaremos pronto. Revisa tu email para más detalles.
+              We've received your request and will contact you soon. Check your email for more details.
             </p>
             <button
               onClick={() => setSubmitted(false)}
               className="group relative px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl font-semibold text-white shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/80 transition-all duration-300 hover:scale-105"
             >
-              <span className="relative z-10">Enviar otra solicitud</span>
+              <span className="relative z-10">Send another request</span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </button>
           </div>
@@ -76,14 +76,14 @@ const ContactPage = () => {
             <Sparkles className="w-12 h-12 text-cyan-400 animate-pulse mx-auto" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            <span className="text-white">Hablemos de tu</span>
+            <span className="text-white">Let's Talk About Your</span>
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-              Próximo Proyecto
+              Next Project
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Completa el formulario y nuestro equipo te contactará en menos de 24 horas
+            Fill out the form and our team will contact you within 24 hours
           </p>
         </div>
 
@@ -92,7 +92,7 @@ const ContactPage = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {mutation.isError && (
               <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-xl backdrop-blur-sm">
-                {mutation.error?.response?.data?.message || 'Error al enviar la solicitud'}
+                {mutation.error?.response?.data?.message || 'Error sending request'}
               </div>
             )}
 
@@ -100,7 +100,7 @@ const ContactPage = () => {
             <div>
               <label className="block text-sm font-semibold text-gray-200 mb-2 flex items-center gap-2">
                 <User size={18} className="text-cyan-400" />
-                Nombre Completo
+                Full Name
               </label>
               <input
                 name="name"
@@ -108,7 +108,7 @@ const ContactPage = () => {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
-                placeholder="Juan Pérez"
+                placeholder="John Smith"
               />
             </div>
 
@@ -125,7 +125,7 @@ const ContactPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
-                placeholder="juan@ejemplo.com"
+                placeholder="john@example.com"
               />
             </div>
 
@@ -133,7 +133,7 @@ const ContactPage = () => {
             <div>
               <label className="block text-sm font-semibold text-gray-200 mb-2 flex items-center gap-2">
                 <Phone size={18} className="text-cyan-400" />
-                Teléfono
+                Phone
               </label>
               <input
                 name="phone"
@@ -142,14 +142,14 @@ const ContactPage = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all"
-                placeholder="+34 600 000 000"
+                placeholder="+44 20 1234 5678"
               />
             </div>
 
             {/* Description */}
             <div>
               <label className="block text-sm font-semibold text-gray-200 mb-2">
-                Descripción del Proyecto
+                Project Description
               </label>
               <textarea
                 name="description"
@@ -158,7 +158,7 @@ const ContactPage = () => {
                 value={formData.description}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-gray-500 transition-all resize-none"
-                placeholder="Cuéntanos más sobre tu proyecto, objetivos, plazos y presupuesto estimado..."
+                placeholder="Tell us more about your project, goals, timeline and estimated budget..."
               />
             </div>
 
@@ -172,12 +172,12 @@ const ContactPage = () => {
                 {mutation.isPending ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Enviando...
+                    Sending...
                   </>
                 ) : (
                   <>
                     <Send size={20} />
-                    Enviar Solicitud
+                    Send Request
                   </>
                 )}
               </span>
@@ -185,29 +185,29 @@ const ContactPage = () => {
             </button>
 
             <p className="text-center text-gray-400 text-sm mt-4">
-              Al enviar este formulario, aceptas que nos pongamos en contacto contigo
+              By submitting this form, you agree that we may contact you
             </p>
           </form>
         </div>
 
         {/* Contact Info */}
         <div className="mt-12 text-center">
-          <p className="text-gray-400 mb-4">¿Prefieres contactarnos directamente?</p>
+          <p className="text-gray-400 mb-4">Prefer to contact us directly?</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="mailto:hola@uixom.com"
+              href="mailto:hello@uixom.com"
               className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2"
             >
               <Mail size={18} />
-              hola@uixom.com
+              hello@uixom.com
             </a>
             <span className="hidden sm:inline text-gray-600">•</span>
             <a
-              href="tel:+34600000000"
+              href="tel:+442012345678"
               className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2"
             >
               <Phone size={18} />
-              +34 600 000 000
+              +44 20 1234 5678
             </a>
           </div>
         </div>

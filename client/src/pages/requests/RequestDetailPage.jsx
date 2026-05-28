@@ -29,7 +29,7 @@ const RequestDetailPage = () => {
       <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-4 rounded-xl backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <AlertCircle size={20} />
-          <span>Error al cargar la solicitud</span>
+          <span>Error loading request</span>
         </div>
       </div>
     );
@@ -47,7 +47,7 @@ const RequestDetailPage = () => {
         <div>
           <h1 className="text-4xl font-bold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-              Detalle de Solicitud
+              Request Details
             </span>
           </h1>
           <p className="mt-1 text-sm text-gray-500">ID: {request._id}</p>
@@ -60,7 +60,7 @@ const RequestDetailPage = () => {
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
             <div className="px-6 py-5 border-b border-gray-700/50 flex items-center gap-3">
               <User className="text-cyan-400" size={24} />
-              <h2 className="text-xl font-semibold text-white">Información del Cliente</h2>
+              <h2 className="text-xl font-semibold text-white">Customer Information</h2>
             </div>
             <div className="p-6 space-y-4">
               <div className="flex items-center gap-4 p-4 bg-gray-800/30 rounded-xl border border-gray-700/30">
@@ -68,7 +68,7 @@ const RequestDetailPage = () => {
                   <User className="text-cyan-400" size={20} />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Nombre</p>
+                  <p className="text-sm text-gray-400">Name</p>
                   <p className="font-semibold text-white">{request.name}</p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ const RequestDetailPage = () => {
                   <Phone className="text-cyan-400" size={20} />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Teléfono</p>
+                  <p className="text-sm text-gray-400">Phone</p>
                   <p className="font-semibold text-white">{request.phone}</p>
                 </div>
               </div>
@@ -98,7 +98,7 @@ const RequestDetailPage = () => {
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
             <div className="px-6 py-5 border-b border-gray-700/50 flex items-center gap-3">
               <FileText className="text-cyan-400" size={24} />
-              <h2 className="text-xl font-semibold text-white">Descripción</h2>
+              <h2 className="text-xl font-semibold text-white">Description</h2>
             </div>
             <div className="p-6">
               <p className="text-gray-300 whitespace-pre-wrap leading-relaxed">{request.description}</p>
@@ -109,14 +109,14 @@ const RequestDetailPage = () => {
             <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
               <div className="px-6 py-5 border-b border-gray-700/50 flex items-center gap-3">
                 <MessageSquare className="text-cyan-400" size={24} />
-                <h2 className="text-xl font-semibold text-white">Notas Internas</h2>
+                <h2 className="text-xl font-semibold text-white">Internal Notes</h2>
               </div>
               <div className="p-6 space-y-4">
                 {request.notes.map((note) => (
                   <div key={note._id} className="border-l-4 border-cyan-500 pl-4 py-3 bg-gray-800/30 rounded-r-lg">
                     <p className="text-gray-300">{note.text}</p>
                     <div className="mt-2 text-sm text-gray-500">
-                      Por {note.author?.name || 'Usuario'} -{' '}
+                      By {note.author?.name || 'User'} -{' '}
                       {formatDate(note.createdAt)}
                     </div>
                   </div>
@@ -130,7 +130,7 @@ const RequestDetailPage = () => {
         <div className="space-y-6">
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
             <div className="px-6 py-5 border-b border-gray-700/50">
-              <h2 className="text-lg font-semibold text-white">Estado</h2>
+              <h2 className="text-lg font-semibold text-white">Status</h2>
             </div>
             <div className="p-6">
               <StatusBadge status={request.status} />
@@ -139,7 +139,7 @@ const RequestDetailPage = () => {
 
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
             <div className="px-6 py-5 border-b border-gray-700/50">
-              <h2 className="text-lg font-semibold text-white">Prioridad</h2>
+              <h2 className="text-lg font-semibold text-white">Priority</h2>
             </div>
             <div className="p-6">
               <PriorityBadge priority={request.priority} />
@@ -149,15 +149,15 @@ const RequestDetailPage = () => {
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
             <div className="px-6 py-5 border-b border-gray-700/50 flex items-center gap-3">
               <Calendar className="text-cyan-400" size={20} />
-              <h2 className="text-lg font-semibold text-white">Fechas</h2>
+              <h2 className="text-lg font-semibold text-white">Dates</h2>
             </div>
             <div className="p-6 space-y-4">
               <div className="p-3 bg-gray-800/30 rounded-lg border border-gray-700/30">
-                <p className="text-sm text-gray-400 mb-1">Creada</p>
+                <p className="text-sm text-gray-400 mb-1">Created</p>
                 <p className="font-semibold text-white">{formatDate(request.createdAt)}</p>
               </div>
               <div className="p-3 bg-gray-800/30 rounded-lg border border-gray-700/30">
-                <p className="text-sm text-gray-400 mb-1">Actualizada</p>
+                <p className="text-sm text-gray-400 mb-1">Updated</p>
                 <p className="font-semibold text-white">{formatDate(request.updatedAt)}</p>
               </div>
             </div>
@@ -166,7 +166,7 @@ const RequestDetailPage = () => {
           {request.assignedTo && (
             <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden">
               <div className="px-6 py-5 border-b border-gray-700/50">
-                <h2 className="text-lg font-semibold text-white">Asignado a</h2>
+                <h2 className="text-lg font-semibold text-white">Assigned to</h2>
               </div>
               <div className="p-6">
                 <p className="font-semibold text-white">{request.assignedTo.name}</p>

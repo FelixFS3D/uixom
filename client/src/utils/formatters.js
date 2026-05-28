@@ -1,5 +1,5 @@
 import { format, formatDistanceToNow } from 'date-fns';
-import { es } from 'date-fns/locale';
+import { enGB } from 'date-fns/locale';
 
 /**
  * Format date to readable string
@@ -8,7 +8,7 @@ import { es } from 'date-fns/locale';
  */
 export const formatDate = (date) => {
   if (!date) return '-';
-  return format(new Date(date), 'dd/MM/yyyy HH:mm', { locale: es });
+  return format(new Date(date), 'dd/MM/yyyy HH:mm', { locale: enGB });
 };
 
 /**
@@ -18,17 +18,17 @@ export const formatDate = (date) => {
  */
 export const formatDateShort = (date) => {
   if (!date) return '-';
-  return format(new Date(date), 'dd/MM/yyyy', { locale: es });
+  return format(new Date(date), 'dd/MM/yyyy', { locale: enGB });
 };
 
 /**
- * Format date as relative time (e.g., "hace 2 horas")
+ * Format date as relative time (e.g., "2 hours ago")
  * @param {string|Date} date 
  * @returns {string}
  */
 export const formatRelativeTime = (date) => {
   if (!date) return '-';
-  return formatDistanceToNow(new Date(date), { addSuffix: true, locale: es });
+  return formatDistanceToNow(new Date(date), { addSuffix: true, locale: enGB });
 };
 
 /**
@@ -62,44 +62,44 @@ export const getPriorityColor = (priority) => {
 };
 
 /**
- * Get status label in Spanish
+ * Get status label in English
  * @param {string} status 
  * @returns {string}
  */
 export const getStatusLabel = (status) => {
   const labels = {
-    new: 'Nueva',
-    in_progress: 'En Progreso',
-    done: 'Completada',
-    cancelled: 'Cancelada',
+    new: 'New',
+    in_progress: 'In Progress',
+    done: 'Completed',
+    cancelled: 'Cancelled',
   };
   return labels[status] || status;
 };
 
 /**
- * Get priority label in Spanish
+ * Get priority label in English
  * @param {string} priority 
  * @returns {string}
  */
 export const getPriorityLabel = (priority) => {
   const labels = {
-    low: 'Baja',
-    medium: 'Media',
-    high: 'Alta',
-    urgent: 'Urgente',
+    low: 'Low',
+    medium: 'Medium',
+    high: 'High',
+    urgent: 'Urgent',
   };
   return labels[priority] || priority;
 };
 
 /**
- * Get role label in Spanish
+ * Get role label in English
  * @param {string} role 
  * @returns {string}
  */
 export const getRoleLabel = (role) => {
   const labels = {
-    client: 'Cliente',
-    admin: 'Administrador',
+    client: 'Client',
+    admin: 'Administrator',
     super_admin: 'Super Admin',
   };
   return labels[role] || role;

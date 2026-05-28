@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../../store/authStore';
 import { LogIn, Mail, Lock, Shield } from 'lucide-react';
+import uiLogo from '../../assets/ui.png';
+import xLogo from '../../assets/x.png';
+import omLogo from '../../assets/om.png';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -49,24 +52,22 @@ const LoginPage = () => {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-block mb-6">
-            <h1 className="text-6xl font-black tracking-tighter">
-              <span className="text-white">UI</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 animate-pulse">
-                X
-              </span>
-              <span className="text-white">OM</span>
-            </h1>
+            <div className="flex items-end justify-center">
+              <img src={uiLogo} alt="UI" className="w-14 h-14 object-contain" />
+              <img src={xLogo} alt="X" className="w-14 h-14 object-contain mx-2 animate-pulse" />
+              <img src={omLogo} alt="OM" className="w-18 h-14 object-contain" />
+            </div>
             <div className="h-1 w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent mt-2"></div>
           </div>
           
           <div className="flex items-center justify-center gap-3 mb-4">
             <Shield className="text-cyan-400" size={28} />
             <h2 className="text-3xl font-bold text-white">
-              Panel de Administración
+              Admin Panel
             </h2>
           </div>
           <p className="text-gray-400">
-            Acceso exclusivo para administradores
+            Exclusive access for administrators
           </p>
         </div>
 
@@ -93,7 +94,7 @@ const LoginPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-500 transition-all"
-                placeholder="admin@ejemplo.com"
+                placeholder="admin@example.com"
               />
             </div>
 
@@ -101,7 +102,7 @@ const LoginPage = () => {
             <div>
               <label className="block text-sm font-semibold text-gray-200 mb-2 flex items-center gap-2">
                 <Lock size={18} className="text-cyan-400" />
-                Contraseña
+                Password
               </label>
               <input
                 name="password"
@@ -126,12 +127,12 @@ const LoginPage = () => {
                 {loading ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Iniciando sesión...
+                    Signing in...
                   </>
                 ) : (
                   <>
                     <LogIn size={20} />
-                    Iniciar Sesión
+                    Sign In
                   </>
                 )}
               </span>
@@ -142,7 +143,7 @@ const LoginPage = () => {
           <div className="mt-6 pt-6 border-t border-gray-700/50">
             <p className="text-xs text-gray-500 text-center flex items-center justify-center gap-2">
               <Shield size={14} className="text-cyan-400" />
-              Acceso protegido con autenticación de doble factor
+              Protected access with two-factor authentication
             </p>
           </div>
         </div>

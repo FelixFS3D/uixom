@@ -1,43 +1,123 @@
-# Dependencies
+# ========================================
+# UIXOM - Docker Ignore Configuration
+# ========================================
+# Archivos que NO deben copiarse a la imagen Docker
+
+# ========================================
+# ARCHIVOS SENSIBLES (ALTA PRIORIDAD)
+# ========================================
+# Variables de entorno CON CREDENCIALES
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Credenciales y certificados
+credentials/
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# ========================================
+# GIT Y CONTROL DE VERSIONES
+# ========================================
+.git
+.github
+.gitignore
+.gitattributes
+
+# ========================================
+# DEPENDENCIAS (se instalan en build)
+# ========================================
 node_modules
 npm-debug.log
 yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
 
-# Environment files (should not be in Docker image)
-.env
-.env.local
-.env.*.local
+# ========================================
+# LOGS Y DEBUGGING
+# ========================================
+logs
+*.log
+server/logs
+server/server.log.txt
 
-# Git
-.git
-.gitignore
+# ========================================
+# TEST Y COVERAGE
+# ========================================
+coverage
+.nyc_output
+__tests__
+*.test.js
+*.spec.js
+test/
+tests/
 
-# IDE
+# ========================================
+# BUILD ARTIFACTS
+# ========================================
+dist
+build
+client/dist
+client/build
+server/dist
+
+# ========================================
+# IDE Y EDITORES
+# ========================================
 .vscode
 .idea
 *.swp
 *.swo
+*.swn
+.project
+.settings
 
-# OS
+# ========================================
+# SISTEMA OPERATIVO
+# ========================================
 .DS_Store
 Thumbs.db
+Desktop.ini
 
-# Logs
-logs
-*.log
+# ========================================
+# BACKUPS Y DATOS
+# ========================================
+backups/
+*.tar.gz
+*.zip
+*.dump
+*.sql
+*.sqlite
+*.db
 
-# Test coverage
-coverage
-.nyc_output
+# ========================================
+# DOCUMENTACIÓN (no necesaria en imagen)
+# ========================================
+docs/
+README.md
+LICENSE
+*.md
+!server/README.md
+!client/README.md
 
-# Build artifacts
-dist
-build
+# ========================================
+# DESARROLLO LOCAL
+# ========================================
+temp/
+tmp/
+*.tmp
+.docker/
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile.dev
 
-# Server specific
-server/logs
-server/server.log.txt
-
-# Client specific
-client/dist
-client/build
+# ========================================
+# MONITORING
+# ========================================
+monitoring/

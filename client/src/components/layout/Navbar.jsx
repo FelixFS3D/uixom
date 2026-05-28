@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { Menu } from '@headlessui/react';
 import { LogOut, User } from 'lucide-react';
 import useAuthStore from '../../store/authStore';
+import uiLogo from '../../assets/ui.png';
+import xLogo from '../../assets/x.png';
+import omLogo from '../../assets/om.png';
 
 const Navbar = () => {
   const { user, logout } = useAuthStore();
@@ -9,12 +12,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/50 z-50">
       <div className="px-6 py-4 flex items-center justify-between">
-        <Link to="/dashboard" className="text-3xl font-black tracking-tighter group">
-          <span className="text-white">UI</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:from-cyan-300 group-hover:to-purple-300 transition-all">
-            X
-          </span>
-          <span className="text-white">OM</span>
+        <Link to="/dashboard" className="flex items-end">
+          <img src={uiLogo} alt="UI" className="w-9 h-9 object-contain" />
+          <img src={xLogo} alt="X" className="w-9 h-9 object-contain mx-1 hover:scale-110 transition-transform" />
+          <img src={omLogo} alt="OM" className="w-12 h-9 object-contain" />
           <span className="ml-3 text-sm font-semibold text-cyan-400">Admin</span>
         </Link>
 
@@ -44,7 +45,7 @@ const Navbar = () => {
                     } flex items-center gap-3 px-4 py-3 text-sm text-gray-200 relative z-10 transition-colors`}
                   >
                     <User size={18} className="text-cyan-400" />
-                    Mi Perfil
+                    My Profile
                   </Link>
                 )}
               </Menu.Item>
@@ -60,7 +61,7 @@ const Navbar = () => {
                     } flex items-center gap-3 px-4 py-3 text-sm text-red-400 w-full text-left relative z-10 transition-colors`}
                   >
                     <LogOut size={18} />
-                    Cerrar Sesión
+                    Sign Out
                   </button>
                 )}
               </Menu.Item>

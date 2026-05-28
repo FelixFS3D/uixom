@@ -42,11 +42,23 @@ const buildInternalEmail = (request) => ({
               
               <!-- Header con Logo -->
               <tr>
-                <td align="center" style="padding: 50px 40px 30px 40px; background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%); border-radius: 16px 16px 0 0;">
-                  <h1 style="margin: 0; font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1;">
-                    <span style="color: #ffffff;">UI</span><span style="background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">X</span><span style="color: #ffffff;">OM</span>
-                  </h1>
-                  <div style="height: 3px; width: 100px; background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); margin: 15px auto 0; border-radius: 2px;"></div>
+                <td align="center" style="padding: 40px 40px 30px 40px; background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%); border-radius: 16px 16px 0 0;">
+                  <!-- Logo SVG UIXOM -->
+                  <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="gradient-x" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <!-- UI -->
+                    <text x="10" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#ffffff" letter-spacing="-2">UI</text>
+                    <!-- X con gradiente -->
+                    <text x="75" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="url(#gradient-x)" letter-spacing="-2">X</text>
+                    <!-- OM -->
+                    <text x="115" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#ffffff" letter-spacing="-2">OM</text>
+                  </svg>
+                  <div style="height: 3px; width: 120px; background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); margin: 15px auto 0; border-radius: 2px;"></div>
                 </td>
               </tr>
 
@@ -130,8 +142,12 @@ const buildInternalEmail = (request) => ({
                     <strong style="background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Sistema de Notificaciones UIXOM</strong><br>
                     Notificación automática de nueva solicitud
                   </p>
-                  <p style="margin: 10px 0 0 0; font-size: 12px; color: #6b7280; text-align: center;">
-                    Fecha: ${new Date().toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' })}
+                  <p style="margin: 15px 0 0 0; font-size: 12px; color: #6b7280; text-align: center;">
+                    Fecha: ${new Date().toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' })}<br>
+                    <span style="color: #4b5563;">Responde desde <a href="mailto:hello@uixom.com" style="color: #22d3ee; text-decoration: none;">hello@uixom.com</a></span>
+                  </p>
+                  <p style="margin: 10px 0 0 0; font-size: 11px; color: #4b5563; text-align: center;">
+                    © ${new Date().getFullYear()} UIXOM · Admin Panel
                   </p>
                 </td>
               </tr>
@@ -172,11 +188,23 @@ const buildClientEmail = (request) => {
                 
                 <!-- Header con Logo -->
                 <tr>
-                  <td align="center" style="padding: 50px 40px 30px 40px; background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border-radius: 16px 16px 0 0;">
-                    <h1 style="margin: 0; font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1;">
-                      <span style="color: #ffffff;">UI</span><span style="background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">X</span><span style="color: #ffffff;">OM</span>
-                    </h1>
-                    <div style="height: 3px; width: 100px; background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); margin: 15px auto 0; border-radius: 2px;"></div>
+                  <td align="center" style="padding: 40px 40px 30px 40px; background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border-radius: 16px 16px 0 0;">
+                    <!-- Logo SVG UIXOM -->
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="gradient-x-client" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                        </linearGradient>
+                      </defs>
+                      <!-- UI -->
+                      <text x="10" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#ffffff" letter-spacing="-2">UI</text>
+                      <!-- X con gradiente -->
+                      <text x="75" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="url(#gradient-x-client)" letter-spacing="-2">X</text>
+                      <!-- OM -->
+                      <text x="115" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#ffffff" letter-spacing="-2">OM</text>
+                    </svg>
+                    <div style="height: 3px; width: 120px; background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); margin: 15px auto 0; border-radius: 2px;"></div>
                   </td>
                 </tr>
 
@@ -230,9 +258,12 @@ const buildClientEmail = (request) => {
                     <div style="text-align: center; margin: 35px 0;">
                       <a href="${emailConfig.websiteUrl || 'https://uixom.com'}" style="display: inline-block; padding: 16px 32px; background: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%); color: #ffffff; text-decoration: none; font-weight: 600; font-size: 16px; border-radius: 10px; box-shadow: 0 10px 25px rgba(34, 211, 238, 0.3);">
                         Visitar UIXOM
-                      </a>
-                    </div>
-                  </td>
+                      </a>5px 0 0 0; font-size: 12px; color: #6b7280; text-align: center;">
+                      Este correo fue enviado en respuesta a tu solicitud de contacto.<br>
+                      Puedes responder directamente a <a href="mailto:hello@uixom.com" style="color: #22d3ee; text-decoration: none;">hello@uixom.com</a>
+                    </p>
+                    <p style="margin: 10px 0 0 0; font-size: 11px; color: #4b5563; text-align: center;">
+                      © ${new Date().getFullYear()} UIXOM · Custom Software & Local AI Integration
                 </tr>
 
                 <!-- Footer -->
