@@ -30,6 +30,9 @@ RUN adduser --system --uid 1001 nodejs
 # Copy necessary files
 COPY --from=builder --chown=nodejs:nodejs /app/server ./
 
+# Create logs directory with proper permissions
+RUN mkdir -p logs && chown -R nodejs:nodejs logs
+
 USER nodejs
 
 EXPOSE 5005
