@@ -130,3 +130,6 @@ BACKEND_REVIEW.md
 notes.md
 TODO.md
 .notes/
+
+# Documentación interna privada
+docs/

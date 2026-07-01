@@ -110,33 +110,33 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-gray-950 text-white">
+    <div className="bg-gray-900 text-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgzNCwgMjExLCAyMzgsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Diagonal B&W Background — bottom-left to top-right */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-white" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             {/* Logo */}
-            <div className="mb-8 inline-block">
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-cyan-700 to-purple-700 bg-clip-text text-transparent">
+              Future-Ready Digital Solutions
+            </h2>
+
+            {/* Logo */}
+            <div className="mb-12 inline-block">
               <div className="flex items-end justify-center">
-                <img src={uiLogo} alt="UI" className="w-18 h-18 md:w-32 md:h-32 object-bottom object-contain" />
-                <img src={xLogo} alt="X" className="w-18 h-18 md:w-32 md:h-32 object-bottom object-contain animate-pulse" />
-                <img src={omLogo} alt="OM" className="w-18 h-18 md:w-44 md:h-32 object-bottom object-contain" />
+                <img src={uiLogo} alt="UI" className="w-18 h-18 md:w-32 md:h-32 object-bottom object-contain" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.7)) drop-shadow(0 -1px 4px rgba(255,255,255,0.5))' }} />
+                <img src={xLogo} alt="X" className="w-18 h-18 md:w-32 md:h-32 object-bottom object-contain animate-pulse" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.7)) drop-shadow(0 -1px 4px rgba(255,255,255,0.5))' }} />
+                <img src={omLogo} alt="OM" className="w-18 h-18 md:w-44 md:h-32 object-bottom object-contain" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.7)) drop-shadow(0 -1px 4px rgba(255,255,255,0.5))' }} />
               </div>
               <div className="h-1 w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent mt-2"></div>
             </div>
-
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Future-Ready Digital Solutions
-            </h2>
             
-            <p className="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-12 text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Transforming innovative ideas into 
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold"> bespoke, privacy-first web applications </span>
               for UK businesses.
@@ -159,42 +159,29 @@ const HomePage = () => {
                 </button>
               </a>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
-              {[
-                { value: '100%', label: 'Bespoke Code' },
-                { value: '0', label: 'Data Leaks' },
-                { value: '24/7', label: 'Local Support' },
-              ].map((stat, i) => (
-                <div key={i} className="text-center group">
-                  <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-2 group-hover:scale-110 transition-transform">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-400 text-sm md:text-base">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-cyan-500/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-cyan-500 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section */}  
       <section id="features" className="py-32 bg-gradient-to-b from-gray-950 to-gray-900 relative">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgzNCwgMjExLCAyMzgsIDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
+        <div
+  className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20"
+  style={{
+    clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
+  }}
+/>
+
+<div
+  className="absolute inset-0 bg-white"
+  style={{
+    clipPath: 'polygon(0 0, 0 100%, 100% 100%)',
+  }}
+/>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-block mb-4">
-              <span className="text-cyan-400 font-mono text-sm tracking-wider">// CORE EXPERTISE</span>
-            </div>
+         
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-300">
                 Crafting Technology that
@@ -248,8 +235,10 @@ const HomePage = () => {
 
       {/* CTA Section */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgzNCwgMjExLCAyMzgsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-white" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
+        </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-2xl rounded-3xl p-12 md:p-16 border border-gray-700/50 shadow-2xl">
