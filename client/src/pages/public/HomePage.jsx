@@ -112,62 +112,60 @@ const HomePage = () => {
   return (
     <div className="bg-gray-900 text-white">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Diagonal B&W Background — bottom-left to top-right */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-white" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
+      <section className="relative h-screen overflow-hidden">
+  {/* Diagonal Background */}
+  <div className="absolute inset-0">
+    <div
+      className="absolute inset-0 bg-white"
+      style={{ clipPath: "polygon(0 0, 0 100%, 100% 0)" }}
+    ></div>
+    <div
+      className="absolute inset-0 bg-gray-900"
+      style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }}
+    ></div>
+  </div>
+
+  <div className="relative z-10 h-full max-w-7xl w-full mx-auto px-6 lg:px-8">
+    <div className="grid lg:grid-cols-2 h-full">
+
+      {/* Columna izquierda — lado blanco: h2 arriba a la izquierda */}
+      <div className="flex items-start justify-start pt-32">
+        <h2 className="text-left text-5xl md:text-7xl font-bold leading-tight bg-gradient-to-r from-cyan-700 to-purple-700 bg-clip-text text-transparent">
+          Future-Ready
+          <br />
+          Digital
+          <br />Solutions
+        </h2>
+      </div>
+
+      {/* Columna derecha — lado azul: p y botones anclados abajo a la derecha */}
+      <div className="flex flex-col items-end justify-end pb-20 pt-32 text-right">
+        <p className="text-xl text-gray-300 leading-relaxed mb-10 max-w-lg">
+          Transforming innovative ideas into
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
+            {" "}bespoke, privacy-first web applications{" "}
+          </span>
+          for UK businesses.
+        </p>
+
+        <div className="flex flex-wrap gap-4 justify-end">
+          <Link to="/contacto">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl font-semibold text-white shadow-lg shadow-cyan-500/40 hover:scale-105 transition-all duration-300">
+              Start Your Project
+            </button>
+          </Link>
         </div>
+      </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            {/* Logo */}
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-cyan-700 to-purple-700 bg-clip-text text-transparent">
-              Future-Ready Digital Solutions
-            </h2>
-
-            {/* Logo */}
-            <div className="mb-12 inline-block">
-              <div className="flex items-end justify-center">
-                <img src={uiLogo} alt="UI" className="w-18 h-18 md:w-32 md:h-32 object-bottom object-contain" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.7)) drop-shadow(0 -1px 4px rgba(255,255,255,0.5))' }} />
-                <img src={xLogo} alt="X" className="w-18 h-18 md:w-32 md:h-32 object-bottom object-contain animate-pulse" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.7)) drop-shadow(0 -1px 4px rgba(255,255,255,0.5))' }} />
-                <img src={omLogo} alt="OM" className="w-18 h-18 md:w-44 md:h-32 object-bottom object-contain" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.7)) drop-shadow(0 -1px 4px rgba(255,255,255,0.5))' }} />
-              </div>
-              <div className="h-1 w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent mt-2"></div>
-            </div>
-            
-            <p className="text-xl md:text-2xl mb-12 text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Transforming innovative ideas into 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold"> bespoke, privacy-first web applications </span>
-              for UK businesses.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/contacto">
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl font-semibold text-white text-lg shadow-lg shadow-cyan-500/50 hover:shadow-cyan-500/80 transition-all duration-300 hover:scale-105">
-                  <span className="relative z-10 flex items-center gap-2">
-                    Start Your Project
-                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} aria-hidden="true" />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </button>
-              </Link>
-              
-              <a href="#features">
-                <button className="px-8 py-4 border-2 border-cyan-500/50 rounded-xl font-semibold text-white text-lg hover:bg-cyan-500/10 transition-all duration-300 backdrop-blur-sm">
-                  View Expertise
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
 
       {/* Features Section */}  
       <section id="features" className="py-32 bg-gradient-to-b from-gray-950 to-gray-900 relative">
         
         <div
-  className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20"
+  className="absolute inset-0 bg-gray-900"
   style={{
     clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
   }}
@@ -237,7 +235,7 @@ const HomePage = () => {
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-white" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 0)' }}></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-purple-600/20 to-pink-600/20" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
+          <div className="absolute inset-0 bg-gray-900" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
